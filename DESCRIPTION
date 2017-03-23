@@ -1,0 +1,13 @@
+Package: ggBrackets
+Type: Package
+Title: ggplot2 barplot significance test layer
+Version: 0.1
+Author: Alex Azzo <azzoa@vcu.edu>
+Maintainer: Alex Azzo <azzoa@vcu.edu>
+Description: A ggplot2 layer for drawing brackets annotated with p-values
+    between bar graph samples.
+License: GPL-3 | file LICENSE
+Depends: ggplot2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
