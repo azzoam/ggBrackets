@@ -1,5 +1,10 @@
 # ggBrackets
-A ggplot2 layer for drawing brackets annotated with p-values between barplot samples.
+A ggplot2 layer for drawing brackets annotated with p-values and significance 
+testing between barplot samples.
+
+## Author
+
+Alex Azzo <azzoa@vcu.edu>
 
 ## What is it
 
