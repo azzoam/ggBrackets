@@ -47,11 +47,12 @@ t_test2 <- function(mean1, mean2, sd1, sd2, n1, n2, m0 = 0, equal.variance = TRU
 #' @param dodge.width Optional -- The width of position_dodge() in the ggplot if groups are present.  Usually 0.9.
 #' @param p_value_star Optional -- Boolean for whether to plot stars representing significance levels or actual p-values.  TRUE plots '*'.  FALSE plots p-values.  '*' = p-value < 0.05, '**' = p-value < 0.01, '***' = p-value < 0.001, 'n.s.' = not significant.
 #' @param extra_y_space Optional -- Numeric to adjust position of the bracket up or down from its default location.
+#' @param ... Additional optional parameters/asthetics.  e.g. color for font color or size for font size.
 #' @return ggplot2 annotation layer
 #' @export
 gg_ttest_between <- function(data, sample_col, sample1, sample2, mean_col, sd_col, n_col, group_col = NA,
                              group1 = NA, group2 = NA, equal.variance = T, dodge.width = 0.9,
-                             p_value_star = F, extra_y_space = 0)
+                             p_value_star = F, extra_y_space = 0, ...)
 {
     if(!is.na(group_col))
     {
@@ -118,6 +119,7 @@ gg_ttest_between <- function(data, sample_col, sample1, sample2, mean_col, sd_co
     {
         p <- paste('p =', p, sep = ' ')
     }
-    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.24) + extra_y_space, label = p)
+    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.24) + extra_y_space,
+                  label = p, ...)
     return(b)
 }

@@ -6,7 +6,7 @@
 \usage{
 gg_bracket_between(data, sample_col, sample1, sample2, mean_col,
   group_col = NA, group1 = NA, group2 = NA, dodge.width = 0.9,
-  extra_y_space = 0)
+  extra_y_space = 0, ...)
 }
 \arguments{
 \item{data}{The dataframe used in the plot}
@@ -28,6 +28,8 @@ gg_bracket_between(data, sample_col, sample1, sample2, mean_col,
 \item{dodge.width}{Optional -- The width of position_dodge() in the ggplot if groups are present.  Usually 0.9.}
 
 \item{extra_y_space}{Optional -- Numeric to adjust position of the bracket up or down from its default location.}
+
+\item{...}{Additional optional parameters/asthetics.  e.g. color for font color or size for font size.}
 }
 \value{
 ggplot2 annotation layer

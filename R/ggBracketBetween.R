@@ -11,10 +11,12 @@
 #' @param group2 Optional -- The group to which the second sample belongs.  Leave NA if there are no groups.
 #' @param dodge.width Optional -- The width of position_dodge() in the ggplot if groups are present.  Usually 0.9.
 #' @param extra_y_space Optional -- Numeric to adjust position of the bracket up or down from its default location.
+#' @param ... Additional optional parameters/asthetics.  e.g. color for font color or size for font size.
 #' @return ggplot2 annotation layer
 #' @export
 gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, group_col = NA,
-                               group1 = NA, group2 = NA, dodge.width = 0.9, extra_y_space = 0)
+                               group1 = NA, group2 = NA, dodge.width = 0.9, extra_y_space = 0,
+                               ...)
 {
     if(!is.na(group_col))
     {
@@ -36,7 +38,8 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
                       x=c(x_dodge_start, x_dodge_start, x_dodge_end),
                       xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
                       y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
-                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space))
+                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
+                      ...)
     } else
     {
         x_dodge_start <- match(sample1, levels(data[,sample_col]))
@@ -51,7 +54,8 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
                       x=c(x_dodge_start, x_dodge_start, x_dodge_end),
                       xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
                       y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
-                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space))
+                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
+                      ...)
     }
     return(a)
 }

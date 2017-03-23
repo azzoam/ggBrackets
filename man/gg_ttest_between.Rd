@@ -6,7 +6,7 @@
 \usage{
 gg_ttest_between(data, sample_col, sample1, sample2, mean_col, sd_col, n_col,
   group_col = NA, group1 = NA, group2 = NA, equal.variance = T,
-  dodge.width = 0.9, p_value_star = F, extra_y_space = 0)
+  dodge.width = 0.9, p_value_star = F, extra_y_space = 0, ...)
 }
 \arguments{
 \item{data}{The dataframe used in the plot}
@@ -36,6 +36,8 @@ gg_ttest_between(data, sample_col, sample1, sample2, mean_col, sd_col, n_col,
 \item{p_value_star}{Optional -- Boolean for whether to plot stars representing significance levels or actual p-values.  TRUE plots '*'.  FALSE plots p-values.  '*' = p-value < 0.05, '**' = p-value < 0.01, '***' = p-value < 0.001, 'n.s.' = not significant.}
 
 \item{extra_y_space}{Optional -- Numeric to adjust position of the bracket up or down from its default location.}
+
+\item{...}{Additional optional parameters/asthetics.  e.g. color for font color or size for font size.}
 }
 \value{
 ggplot2 annotation layer
