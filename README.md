@@ -99,3 +99,5 @@ p <- p + theme(plot.title = element_text(size = 24, hjust = 0.5),
 p
 
 ```
+
+![Default graph](img/Rplot1.png)
