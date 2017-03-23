@@ -11,9 +11,9 @@ Alex Azzo
 
 **ggBrackets** is a very small R package which allows the adding of
 brackets and significance testing between samples/observations in
-ggplot2, a simple goal which I found difficult to accomplish natively
-in ggplot.  ggBrackets was specifically written for use with geom_bar()
-and has not been tested thoroughly with other geometries yet.  
+ggplot2, a simple task which I found difficult and finicky to accomplish 
+natively in ggplot.  ggBrackets was specifically written for use with 
+geom_bar() and has not been tested thoroughly with other geometries yet.  
 
 ## Features
 
