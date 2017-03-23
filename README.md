@@ -4,7 +4,8 @@ testing between barplot samples.
 
 ## Author
 
-Alex Azzo <azzoa@vcu.edu>
+Alex Azzo  
+<azzoa@vcu.edu>
 
 ## What is it
 
