@@ -22,6 +22,7 @@ Some features of the package are:
 - Support for grouped or non grouped bargraphs natively  
 - Option to display either p-values or several levels of stars
 to indicate significance  
+- Automatic height adjustment based on the height of the two bars  
 - Easy `extra_y_space` parameter to fine tune the vertical location of
 the brackets/p-values  
 - Utilizes its own `t_test2` function which allows summary statistics
@@ -115,7 +116,7 @@ p +
 
 ```
 
-![Default graph](img/Rplot2.png)
+![ggBrackets graph](img/Rplot2.png)
 
 ```r
 # Multiple brackets
@@ -144,7 +145,7 @@ p +
 
 ```
 
-![Default graph](img/Rplot_mul.png)
+![Mult graph](img/Rplot_mul.png)
 
 ```r
 # With stars instead of p-values
@@ -173,5 +174,35 @@ p +
 
 ```
 
-![Default graph](img/Rplot_mul_stars.png)
+![Mult star graph](img/Rplot_mul_stars.png)
+
+Works great for single group bar graphs as well, simply leave out the group parameters.
+
+```r
+# Single group graph
+tg_oj <- tg[tg$supp == 'OJ', c('dose', 'len_mean', 'len_sd', 'len_n')]
+
+p <- ggplot(tg_oj, aes(x = dose, y = len_mean)) +
+    geom_bar(stat = 'identity') +
+    geom_errorbar(aes(ymax = len_mean + len_sd, ymin = len_mean - len_sd),
+                  width = 0.25) +
+    xlab('OJ dose') +
+    ylab('Tooth Length')
+    
+p <- p + theme(plot.title = element_text(size = 24, hjust = 0.5),
+               axis.title = element_text(size = 14),
+               axis.text = element_text(size = 12),
+               legend.text = element_text(size = 12),
+               legend.title = element_text(size = 14))
+
+p +
+    # Between dose1 and dose2
+    gg_bracket_between(data = tg_oj, sample_col = 'dose', sample1 = 1, sample2 = 2, 
+                       mean_col = 'len_mean', extra_y_space = 5) +
+    gg_ttest_between(data = tg_oj, sample_col = 'dose', sample1 = 1, sample2 = 2, 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', extra_y_space = 5)
+
+```
+
+![Single graph](img/Rplot_single.png)
 
