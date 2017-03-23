@@ -101,3 +101,77 @@ p
 ```
 
 ![Default graph](img/Rplot1.png)
+
+```r
+# With ggBrackets
+p + 
+    # Between OJ-dose1 and OJ-dose2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 1, group2 = 2,
+                       extra_y_space = 5) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 1, group2 = 2, extra_y_space = 5)
+
+```
+
+![Default graph](img/Rplot2.png)
+
+```r
+# Multiple brackets
+p + 
+    # Between OJ-dose1 and OJ-dose 2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 1, group2 = 2,
+                       extra_y_space = 5) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 1, group2 = 2, extra_y_space = 5) +
+    # Between VC-dose1 and VC-dose 2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'VC', sample2 = 'VC', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 1, group2 = 2,
+                       extra_y_space = 5) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'VC', sample2 = 'VC', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 1, group2 = 2, extra_y_space = 5) +
+    # Between OJ-dose2 and VC-dose2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'VC', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 2, group2 = 2,
+                       extra_y_space = 10) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'VC', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 2, group2 = 2, extra_y_space = 10)
+
+```
+
+![Default graph](img/Rplot_mul.png)
+
+```r
+# With stars instead of p-values
+p + 
+    # Between OJ-dose1 and OJ-dose 2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 1, group2 = 2,
+                       extra_y_space = 5) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'OJ', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 1, group2 = 2, extra_y_space = 5, p_value_star = T) +
+    # Between VC-dose1 and VC-dose 2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'VC', sample2 = 'VC', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 1, group2 = 2,
+                       extra_y_space = 5) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'VC', sample2 = 'VC', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 1, group2 = 2, extra_y_space = 5, p_value_star = T) +
+    # Between OJ-dose2 and VC-dose2
+    gg_bracket_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'VC', 
+                       mean_col = 'len_mean', group_col = 'dose', group1 = 2, group2 = 2,
+                       extra_y_space = 10) +
+    gg_ttest_between(data = tg, sample_col = 'supp', sample1 = 'OJ', sample2 = 'VC', 
+                     mean_col = 'len_mean', sd_col = 'len_sd', n_col = 'len_n', group_col = 'dose',
+                     group1 = 2, group2 = 2, extra_y_space = 10, p_value_star = T)
+
+```
+
+![Default graph](img/Rplot_mul_stars.png)
+
