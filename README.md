@@ -23,6 +23,10 @@ The two primary functions in **ggBrackets** are:
 2. `gg_ttest_between()` - peforms a 2-sample t-test and displays the
 resulting p-value on the plot
 
+A third function, `gg_value_between()`, allows user specified text to appear 
+between bars.  This gives the flexibility to use the output of any statistical 
+method in R with ggBrackets.
+
 Some features of the package are:
 
 - Support for grouped or non grouped bargraphs natively  
@@ -64,7 +68,7 @@ where
 3. Each value is a cell
 
 Data formatted in this way is also the most convenient to use with 
-ggplot2 anyways.  Additionally, for t-testing **ggBrackets** requires
+ggplot2 anyways.  Additionally, `gg_ttest_between()` requires
 
 1. One column containing observation means data  
 2. One column containing observation standard deviation data  
