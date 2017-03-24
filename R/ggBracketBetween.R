@@ -20,7 +20,6 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
 {
     if(!is.na(group_col))
     {
-
         n <- length(levels(data[,group_col]))
         dex1 <- match(group1, levels(data[,group_col]))
         dex_sample1 <- match(sample1, levels(data[,sample_col]))
@@ -34,12 +33,6 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
 
         ymax <- max(c(m1, m2))
 
-        a <- annotate("segment",
-                      x=c(x_dodge_start, x_dodge_start, x_dodge_end),
-                      xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
-                      y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
-                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
-                      ...)
     } else
     {
         x_dodge_start <- match(sample1, levels(data[,sample_col]))
@@ -50,12 +43,12 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
 
         ymax <- max(c(m1, m2))
 
-        a <- annotate("segment",
-                      x=c(x_dodge_start, x_dodge_start, x_dodge_end),
-                      xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
-                      y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
-                      yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
-                      ...)
     }
+    a <- annotate("segment",
+                  x=c(x_dodge_start, x_dodge_start, x_dodge_end),
+                  xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
+                  y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
+                  yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
+                  ...)
     return(a)
 }
