@@ -119,7 +119,16 @@ gg_ttest_between <- function(data, sample_col, sample1, sample2, mean_col, sd_co
     {
         p <- paste('p =', p, sep = ' ')
     }
-    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.24) + extra_y_space,
+    max_h <- 0
+    for(i in data[,mean_col])
+    {
+        if(i > max_h)
+        {
+            max_h <- i
+        }
+    }
+    y_space <- 0.10 * max_h
+    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.15) + y_space + extra_y_space,
                   label = p, ...)
     return(b)
 }

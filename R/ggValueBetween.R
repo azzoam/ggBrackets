@@ -45,8 +45,17 @@ gg_value_between <- function(data, value, sample_col, sample1, sample2, mean_col
         ymax <- max(c(m1, m2))
     }
 
+    max_h <- 0
+    for(i in data[,mean_col])
+    {
+        if(i > max_h)
+        {
+            max_h <- i
+        }
+    }
+    y_space <- 0.10 * max_h
 
-    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.24) + extra_y_space,
+    b <- annotate("text", x = mean(c(x_dodge_end, x_dodge_start)), y = (ymax*1.15) + y_space + extra_y_space,
                   label = value, ...)
     return(b)
 }

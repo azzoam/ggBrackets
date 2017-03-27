@@ -44,11 +44,20 @@ gg_bracket_between <- function(data, sample_col, sample1, sample2, mean_col, gro
         ymax <- max(c(m1, m2))
 
     }
+    max_h <- 0
+    for(i in data[,mean_col])
+    {
+        if(i > max_h)
+        {
+            max_h <- i
+        }
+    }
+    y_space <- 0.05 * max_h
     a <- annotate("segment",
                   x=c(x_dodge_start, x_dodge_start, x_dodge_end),
                   xend=c(x_dodge_start, x_dodge_end, x_dodge_end),
-                  y= c((ymax*1.15) + extra_y_space, (ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space),
-                  yend=c((ymax*1.20) + extra_y_space, (ymax*1.20) + extra_y_space,(ymax*1.15) + extra_y_space),
+                  y= c((ymax*1.15) + extra_y_space, (ymax*1.15) + y_space + extra_y_space, (ymax*1.15) + y_space + extra_y_space),
+                  yend=c((ymax*1.15) + y_space + extra_y_space, (ymax*1.15) + y_space + extra_y_space,(ymax*1.15) + extra_y_space),
                   ...)
     return(a)
 }
