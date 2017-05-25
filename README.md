@@ -81,14 +81,21 @@ library(ggplot2)
 library(ggBrackets)
 
 # Data from ToothGrowth built in R dataset
-tg <- data.frame('supp' = c(rep('OJ', 3), rep('VC', 3)),
-                 'dose' = c(0.5, 1, 2, 0.5, 1, 2),
-                 'len_mean' = c(13.23, 22.70, 26.06, 7.98, 16.77, 26.14),
-                 'len_sd' = c(4.459709, 3.910953, 2.655058, 2.746634, 2.515309, 4.797731),
-                 'len_n' = c(rep(10, 6)))
+data("ToothGrowth")
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+ToothGrowth$supp <- as.factor(ToothGrowth$supp)
 
-tg$supp <- as.factor(tg$supp)
-tg$dose <- as.factor(tg$dose)
+tg <- data.frame()
+for(dose in levels(ToothGrowth$dose)) {
+    for(supp in levels(ToothGrowth$supp)) {
+        len_mean <- mean(ToothGrowth[ToothGrowth$dose == dose & ToothGrowth$supp == supp, 'len'])
+        len_sd <- sd(ToothGrowth[ToothGrowth$dose == dose & ToothGrowth$supp == supp, 'len'])
+        len_n <- length(ToothGrowth[ToothGrowth$dose == dose & ToothGrowth$supp == supp, 'len'])
+        tmp_df <- data.frame(len_mean, len_sd, len_n, supp, dose)
+        tg <- rbind(tg, tmp_df)
+    }
+}
+rm(dose, supp, len_mean, len_n, len_sd, tmp_df)
 
 # Standard grouped ggplot bargraph with error bars
 p <- ggplot(tg, aes(x = supp, y = len_mean, fill = dose)) +
